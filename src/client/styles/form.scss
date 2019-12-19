@@ -1,0 +1,31 @@
+.form-section {
+  display: flex;
+  border: 1px solid #545454;
+  padding: 40px;
+  border-radius: 3px;
+  width: 60%;
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    .name-field {
+      padding: 5px 10px;
+      line-height: 16px;
+      width: 50%;
+      margin-left: 20%;
+    }
+    .submit-button {
+      margin-left: 55%;
+      margin-top: 5%;
+      color: orange;
+      width: 20%;
+    }
+    .error {
+      margin-left: 20%;
+      margin-top: 1%;
+      font-size: 13px;
+      color: red;
+    }
+  }
+}

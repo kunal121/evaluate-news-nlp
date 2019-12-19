@@ -1,14 +1,4 @@
-export const showResponse = (content, container) => {
-  let ol = document.createElement("ol");
-  for (let element of content) {
-    const li = document.createElement("li");
-    li.innerHTML = element.label;
-    ol.append(li);
-  }
-  container.append(ol);
-};
-
-function handleSubmit(event) {
+const handleSubmitMock = (event, Client, fetch) => {
   event.preventDefault();
   let formText = document.getElementById("name").value;
   let resultsContainer = document.getElementsByClassName("show-results");
@@ -32,6 +22,22 @@ function handleSubmit(event) {
       resultsContainer[0].innerHTML = error;
     });
   return true;
-}
+};
 
-export { handleSubmit };
+describe("Checking handle submit functionality", () => {
+  it("function is getting called", () => {
+    const event = {
+      preventDefault: () => {}
+    };
+    const fakeFetch = url => {
+      return Promise.resolve({});
+    };
+    const Client = {
+      checkForName: () => {
+        return true;
+      }
+    };
+    document.body.innerHTML = `<div> <input id="name" value="kunal" /> <span class="show-results"></span> <span class="error"></span><button id="button" /> </div>`;
+    expect(handleSubmitMock(event, Client, fakeFetch)).toBe(true);
+  });
+});
